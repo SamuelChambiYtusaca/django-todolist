@@ -7,7 +7,7 @@ from lists.models import Todo, TodoList
 class UserSerializer(serializers.ModelSerializer):
 
     todolists = serializers.PrimaryKeyRelatedField(
-        many=True, queryset=TodoList.objects.all()
+        many = True, queryset = TodoList.objects.all()
     )
 
     class Meta:
