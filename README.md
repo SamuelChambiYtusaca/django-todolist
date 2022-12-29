@@ -1,36 +1,115 @@
-# Django-Todolist
+# PROYECTO FINAL - INGENIERIA DE SOFTWARE II
+## _TodoList - Django App_
 
-[![License][license-image]][license-url] [![Build Status][travis-image]][travis-url]
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-Django-Todolist is a todolist web application with the most basic features of most web apps, i.e. accounts/login, API and (somewhat) interactive UI.
+Django-Todolist es una aplicación web de listas de tareas con las funciones más básicas de la mayoría de las aplicaciones web, es decir, cuentas/inicio de sesión, API y una interfaz de usuario algo interactiva.
 
----
-CSS | [Skeleton](http://getskeleton.com/)
-JS  | [jQuery](https://jquery.com/)
+Lista de tareas abarcadas por la modificacion del proyecto inicial:
+- Pipeline
+> Ejecución de pipeline CI/CD: preparación, construcción automática y pruebas unitarias
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/pipeline.png)
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/eje_pipeline.png)
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/_aux.png)
+      
+      pipeline {
+          agent any
+          stages{
+              stage('Preparation') { 
+                  steps{
+                      script{
+                          cleanWs()
+                          sh '''#!/bin/bash
+                             git clone https://github.com/SamuelChambiYtusaca/django-todolist.git
+                             cd ./django-todolist 
+                             pip install virtualenv
+                             virtualenv venv
+                             source venv/bin/activate
+                             pip install pybuilder
+                             pip install -r requirements.txt'''
+                      }   
+                  }
+              }
+              stage('Build') {
+                  // Run the maven build
+                  steps {
+                      script{
+                          sh '''#!/bin/bash
+                          cd ./django-todolist
+                          source venv/bin/activate
+                          python3 setup.py
+                          python3 manage.py migrate'''
+                      }
+                  }
+              }
+              stage('test') {
+                  steps{
+                      script{
+                          sh '''#!/bin/bash
+                          cd ./django-todolist
+                          python3 manage.py test src.unittest'''        
+                      }
+                  }
+              }
+          }
+      }
+- Creacion de repositorio y branches correspondientes (Github): repositorio: [django_todolist](https://github.com/SamuelChambiYtusaca/django-todolist)
+- Aplicacion de herramientas de construcción Automática (PyBuilder).
+> Construcción automática: se separó la construcción de la ejecución de pruebas unitarias, las pruebas unitarias se realizan durante la ejecución del pipeline
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/build0.png)
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/build1.png)
+- Análisis Estático (SonarQube).
+> Issues encontrados usando la herramienta SonarQube
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/issue1.png)
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/issue2.png)
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/issue3.png)
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/issue4.png)
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/issue5.png)
+> Security hotspot encontrado usando herramienta SonarQube
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/security_hotspot1.png)
+- Pruebas Unitarias.
+> Test 1: usert_tests
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/test1.png)
+> Test 2: account_tests
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/test2.png)
+> Test 3: list_model_tests
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/test3.png)
+> Test 4: lists_tests
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/test4.png)
+> Test 5: login_for_tests
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/test5.png)
+> Test 6: todo_form_tests
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/test6.png)
+> Test 7: todo_list_form_tests
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/test7.png)
+> Test 8: todo_list_tests
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/test8.png)
+> Test 9: todo_tests
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/test9.png)
+- Pruebas Funcionales (Selenium Webdriver).
+> Pruebas funcionales implementadas
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/pruebas_funcionales.png)
+- Gestion de tareas e Issues (Trello).
+> Tareas asignadas en Trello
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/trello.png)
+# LABORATORIO 8
+ - Documento de reporte de SonarQube y SonarLint: [lab 8 pdf](https://github.com/SamuelChambiYtusaca/django-todolist/blob/master/Lab8_Reporte_SonarQube_Sonarlint.pdf)
+ > Code smells encontrados usando la herramamienta SonarLint
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/code_smell1.png)
+![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/code_smell2.png)
+## Creacion del repositorio
 
-I've also build a quite similar app in Flask: https://github.com/rtzll/flask-todolist
+## Instalacion de la aplicacion
+- En una primera instancia, corremos el siguiente comando para la descarga de los requimientos.
 
+        cd django-todolist
+        pip install -r requirements.txt
 
-## Explore
-Try it out by installing the requirements. (Works only with python >= 3.8, due to Django 4)
+- Continuamos con Migrate:
+- Luego se inicia en el servidor (default: http://localhost:8000)
 
-    pip install -r requirements.txt
-
-Migrate:
-
-    python manage.py migrate
-
-And then start the server (default: http://localhost:8000)
-
-    python manage.py runserver
-
-
-Now you can browse the [API](http://localhost:8000/api/)
-or start on the [landing page](http://localhost:8000/)
-
-
-[license-url]: https://github.com/rtzll/django-todolist/blob/master/LICENSE
-[license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
-
-[travis-url]: https://travis-ci.org/rtzll/django-todolist
-[travis-image]: https://travis-ci.org/rtzll/django-todolist.svg?branch=master
+        python manage.py migrate
+        
+- Finalmente, iniciamos el servidor con:
+        
+        python manage.py runserver
