@@ -1,6 +1,11 @@
 # PROYECTO FINAL - INGENIERIA DE SOFTWARE II
 ## _TodoList - Django App_
 
+- Alejandro Villa Herrera
+- Julio Yauri Ituccayasi
+- Samuel Chambi Ytusaca
+- Moises Casaverde Aleman
+
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 Django-Todolist es una aplicación web de listas de tareas con las funciones más básicas de la mayoría de las aplicaciones web, es decir, cuentas/inicio de sesión, API y una interfaz de usuario algo interactiva.
