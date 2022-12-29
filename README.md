@@ -70,6 +70,7 @@ Lista de tareas abarcadas por la modificacion del proyecto inicial:
 ![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/issue3.png)
 ![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/issue4.png)
 ![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/issue5.png)
+
 > Security hotspot encontrado usando herramienta SonarQube
 ![Error al cargar la imagen](https://github.com/SamuelChambiYtusaca/django-todolist/blob/willa/imagenes/security_hotspot1.png)
 - Pruebas Unitarias.
