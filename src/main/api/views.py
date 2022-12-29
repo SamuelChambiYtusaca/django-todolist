@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
 from rest_framework import permissions, viewsets
 
-from api.serializers import TodoListSerializer, TodoSerializer, UserSerializer
-from lists.models import Todo, TodoList
+from src.main.api.serializers import TodoListSerializer, TodoSerializer, UserSerializer
+from src.main.lists.models import Todo, TodoList
 
 
 class IsCreatorOrReadOnly(permissions.BasePermission):
@@ -26,7 +26,6 @@ class IsCreatorOrReadOnly(permissions.BasePermission):
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    # queryset = User.objects.all()
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (permissions.IsAdminUser,)

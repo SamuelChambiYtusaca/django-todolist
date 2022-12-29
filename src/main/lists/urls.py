@@ -1,6 +1,6 @@
 from django.urls import path
 
-from lists import views
+from src.main.lists import views
 
 app_name = "lists"
 urlpatterns = [

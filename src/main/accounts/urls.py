@@ -1,6 +1,6 @@
 from django.urls import path
 
-from accounts import views
+from src.main.accounts import views
 
 app_name = "auth"
 urlpatterns = [

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(__file__)
 
 
 # Quick-start development settings - unsuitable for production
@@ -36,11 +36,11 @@ INSTALLED_APPS = (
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "todolist",
-    "lists",
-    "accounts",
+    "src.main.todolist",
+    "src.main.lists",
+    "src.main.accounts",
     "rest_framework",
-    "api",
+    "src.main.api",
 )
 
 MIDDLEWARE = (
@@ -53,9 +53,9 @@ MIDDLEWARE = (
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 )
 
-ROOT_URLCONF = "todolist.urls"
+ROOT_URLCONF = "src.main.todolist.urls"
 
-WSGI_APPLICATION = "todolist.wsgi.application"
+WSGI_APPLICATION = "src.main.todolist.wsgi.application"
 
 
 # Database
